@@ -7,9 +7,44 @@
   >
     <AuDropdown @title="Aangemeld als ..." @alignment="right" role="menu">
       <AuButton @skin="link" role="menuitem">
-        <AuIcon @icon="logout" @alignment="left" />Afmelden 8
+        <AuIcon @icon="logout" @alignment="left" />
+        Afmelden
       </AuButton>
     </AuDropdown>
   </AuMainHeader>
 
+  <form class="au-c-form" {{on "submit" this.handleSubmit}}>
+    <AuFormRow class="au-o-box">
+      <AuLabel for="intent">
+        Intent
+      </AuLabel>
+      <AuInput id="intent" value={{this.currentIntent}} />
+
+      <AuLabel for="redirectUrl">
+        Redirect URL
+      </AuLabel>
+      <AuInput
+        value={{this.currentRedirectUrl}}
+        {{on "input" this.updateCurrentRedirectUrl}}
+      />
+
+      <AuButtonGroup class="add-save-buttons">
+        <AuButton
+          @skin="secondary"
+          @icon="plus"
+          {{on "click" this.addNewRedirectUrl}}
+        >
+          Add Redirect URL
+        </AuButton>
+        <AuButton type="submit">
+          Save
+        </AuButton>
+      </AuButtonGroup>
+      <ul>
+        {{#each this.redirectUrls as |url|}}
+          <li>{{url}}</li>
+        {{/each}}
+      </ul>
+    </AuFormRow>
+  </form>
 </AuApp>

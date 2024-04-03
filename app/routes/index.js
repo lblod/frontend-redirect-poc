@@ -1,3 +1,8 @@
 import Route from '@ember/routing/route';
-
-export default class IndexRoute extends Route {}
+import { service } from '@ember/service';
+export default class IndexRoute extends Route {
+  @service store;
+  async model() {
+    return await this.store.createRecord('redirect');
+  }
+}

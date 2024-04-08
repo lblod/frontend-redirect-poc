@@ -1,2 +1,22 @@
 {{page-title "MultipleRedirects"}}
 {{outlet}}
+<AuModalContainer />
+<AuModal @modalOpen={{true}} @closable={{false}}>
+  <:title>Open with:</:title>
+  <:body>
+    {{#each @model as |redirect|}}
+      <p>
+        Redirect URL:
+        <a
+          href="#"
+          {{on "click" (fn this.selectRedirect redirect)}}
+        >{{redirect}}</a>
+
+      </p>
+
+    {{/each}}
+  </:body>
+  <:footer>
+  </:footer>
+
+</AuModal>

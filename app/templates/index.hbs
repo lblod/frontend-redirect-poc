@@ -21,9 +21,11 @@
       >
         Add Redirect URL
       </AuButton>
-      <AuButton type="submit">
-        Save
-      </AuButton>
+      {{#if this.redirectUrls}}
+        <AuButton type="submit">
+          Save
+        </AuButton>
+      {{/if}}
     </AuButtonGroup>
     <ul>
       {{#each this.redirectUrls as |url|}}

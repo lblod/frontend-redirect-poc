@@ -7,13 +7,8 @@
     {{#each @model as |redirect|}}
       <p>
         Redirect URL:
-        <a
-          href="#"
-          {{on "click" (fn this.selectRedirect redirect)}}
-        >{{redirect}}</a>
-
+        <AuLinkExternal href={{redirect}}>{{redirect}}</AuLinkExternal>
       </p>
-
     {{/each}}
   </:body>
   <:footer>

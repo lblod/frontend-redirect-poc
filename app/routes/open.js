@@ -26,8 +26,13 @@ export default class OpenRoute extends Route {
 
     if (params.intent && params.resource) {
       const redirectsObject = redirects.firstObject;
+      if (!redirectsObject) {
+        this.router.transitionTo('not-found');
+      }
       const redirectUrlArray = redirectsObject.get('redirectUrl');
-
+      if (!redirectUrlArray) {
+        this.router.transitionTo('info');
+      }
       if (redirectUrlArray.length === 1) {
         const targetUrl = redirectUrlArray[0].replace(
           '$resource',

@@ -10,4 +10,5 @@ Router.map(function () {
   this.route('open');
   this.route('not-found');
   this.route('multiple-redirects');
+  this.route('info');
 });
